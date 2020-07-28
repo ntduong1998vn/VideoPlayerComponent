@@ -11,12 +11,12 @@ const sources = [
     src: "http://media.w3.org/2010/05/video/movie_300.webm",
     type: "video/webm",
     label: "720P",
-    selected: true,
   },
   {
-    src: "http://techslides.com/demos/sample-videos/small.ogv",
-    type: "video/ogg",
+    src: "https://www.youtube.com/watch?v=xjS6SftYQaQ",
+    type: "video/youtube",
     label: "480P",
+    selected: true,
   },
 ];
 

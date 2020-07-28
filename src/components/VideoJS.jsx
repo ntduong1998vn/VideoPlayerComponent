@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import "video.js/dist/video-js.min.css";
 import videojs from "video.js";
+// import YoutubePlugin from "videojs-youtube";
+require("videojs-youtube/dist/Youtube");
 require("@silvermine/videojs-quality-selector")(videojs);
 
 const usePlayer = ({ src, controls, autoplay }) => {
@@ -16,6 +18,7 @@ const usePlayer = ({ src, controls, autoplay }) => {
         overrideNative: true,
       },
     },
+    playbackRates: [0.5, 1, 1.5, 2],
   };
   const videoRef = useRef(null);
   const [player, setPlayer] = useState(null);
@@ -60,7 +63,12 @@ const VideoPlayer = ({ src, controls, autoplay }) => {
 
   return (
     <div data-vjs-player>
-      <video ref={playerRef} className="video-js" />
+      <video
+        ref={playerRef}
+        className="video-js"
+        data-setup='{ "techOrder": ["youtube", "html5"] }'
+        poster="//vjs.zencdn.net/v/oceans.png"
+      />
     </div>
   );
 };
