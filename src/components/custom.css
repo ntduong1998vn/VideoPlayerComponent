@@ -1,0 +1,7 @@
+.video-js .vjs-duration,
+.vjs-no-flex .vjs-duration {
+  display: block !important;
+}
+.video-js .vjs-current-time {
+  display: block !important;
+}
