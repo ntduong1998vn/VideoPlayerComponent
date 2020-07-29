@@ -57,6 +57,10 @@ const usePlayer = ({ src, controls, autoplay }) => {
     //   console.log("seeking");
     // });
     handleAds(vjsPlayer);
+    vjsPlayer.on("adtimeupdate", function () {
+      var player = this;
+      console.log(player.ads.contentchanged);
+    });
     setPlayer(vjsPlayer);
 
     return () => vjsPlayer.dispose();
@@ -84,7 +88,6 @@ const usePlayer = ({ src, controls, autoplay }) => {
     player.on("readyforpreroll", function () {
       player.ads.startLinearAdMode();
       // play your linear ad content
-      // in this example, we use a static mp4
       player.src({
         src: "http://techslides.com/demos/sample-videos/small.webm",
         type: "video/webm",
