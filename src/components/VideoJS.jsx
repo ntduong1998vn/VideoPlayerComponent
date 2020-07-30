@@ -59,7 +59,7 @@ const usePlayer = ({ src, controls, autoplay }) => {
     handleAds(vjsPlayer);
     vjsPlayer.on("adtimeupdate", function () {
       var player = this;
-      console.log(player.ads.contentchanged);
+      console.log(player.ads.skipLinearAdMode());
     });
     setPlayer(vjsPlayer);
 
@@ -78,7 +78,9 @@ const usePlayer = ({ src, controls, autoplay }) => {
   }, [src]);
 
   function handleAds(player) {
-    player.ads(); // initialize videojs-contrib-ads
+    player.ads({
+      timeout: 3000,
+    }); // initialize videojs-contrib-ads
     // request ads whenever there's new video content
     player.on("contentchanged", function () {
       // in a real plugin, you might fetch new ad inventory here
@@ -116,7 +118,7 @@ const VideoPlayer = ({ src, controls, autoplay }) => {
 
   return (
     <div data-vjs-player>
-      <video ref={playerRef} className="video-js" />
+      <video ref={playerRef} className="video-js vjs-big-play-centered" />
     </div>
   );
 };
